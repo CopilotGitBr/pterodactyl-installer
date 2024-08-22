@@ -246,7 +246,14 @@ php_fpm_conf() {
 }
 
 ubuntu_dep() {
-  apt install php
+  # Install deps for adding repos
+  install_packages "software-properties-common apt-transport-https ca-certificates gnupg"
+
+  # Add Ubuntu universe repo
+  add-apt-repository universe -y
+
+  # Add PPA for PHP (we need 8.1)
+  LC_ALL=C.UTF-8 apt install php
 }
 
 debian_dep() {
