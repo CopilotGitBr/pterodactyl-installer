@@ -98,7 +98,7 @@ fi
 
 install_composer() {
   output "Installing composer.."
-  curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
+  apt install composer
   success "Composer installed!"
 }
 
@@ -253,7 +253,9 @@ ubuntu_dep() {
   add-apt-repository universe -y
 
   # Add PPA for PHP (we need 8.1)
-  LC_ALL=C.UTF-8 add-apt-repository -y ppa:ondrej/php
+  LC_ALL=C.UTF-8 
+
+  apt install php
 }
 
 debian_dep() {
